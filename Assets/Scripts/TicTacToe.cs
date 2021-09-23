@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class TicTacToe : MonoBehaviour
 {
-    Color[] colorlist = { Color.yellow, Color.green, Color.red, Color.blue};
-    private GameObject thing;
-    private SpriteRenderer sprite;
+    public Sprite O, X;
+    private SpriteRenderer spriteR;
     private void Start()
     {
-        sprite = thing.GetComponent<SpriteRenderer>();
-        thing = GameObject.Find("Color");
-        colorChange();
+        spriteR = gameObject.GetComponent<SpriteRenderer>();
+        spriteR.sprite = O;
     }
     private void OnMouseDown()
     {
-        colorChange();
-    }
-    void colorChange()
-    {
-        sprite.color = colorlist[Random.Range(0, colorlist.Length)];
+        if(spriteR.sprite == O)
+        {
+        spriteR.sprite = X;
+            spriteR.color = new Color(1, 0, 0, 1);
+        }
+        else
+        {
+            spriteR.sprite = O;
+            spriteR.color = new Color(255, 0, 0, 1);
+        }
     }
 }
